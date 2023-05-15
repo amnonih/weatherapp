@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: Weather API
+  version: 1.0.0
+  description: An API to retrieve current weather information
+servers:
+  - url: http://127.0.0.1:8000/
+paths:
+  /weather:
+    get:
+      summary: Get current weather information
+      description: Returns the current weather information for the specified location
+      parameters:
+        - name: location
+          in: query
+          description: The location for which to retrieve weather information
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response containing the weather information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  temperature:
+                    type: number
+                    description: The current temperature in degrees Celsius
+                  humidity:
+                    type: number
+                    description: The current relative humidity in percentage
+                  wind_speed:
+                    type: number
+                    description: The current wind speed in kilometers per hour
