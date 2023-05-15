@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "9240daee-f066-4c43-9acd-859e731e79ea",
+		"name": "Weather API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27396745"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/forecast_weather?City=Sarajevo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiKey = \"f3ed51b69a289e802be8af96e841cb18\";\r",
+							"pm.globals.set(\"apiKey\", apiKey);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has expected keys\", function () {\r",
+							"    pm.expect(pm.response.json().hasOwnProperty(\"weather\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"description\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"temperature\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"humidity\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"wind_speed\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"city\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"country\")).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " import requests\r\n import json api_key = f3ed51b69a289e802be8af96e841cb18 \r\n url = \"http://127.0.0.1:8000/\" \r\n querystring = {\"City\": \"Sarajevo\", \"api_key\": api_key}\r\n payload = \"\\r\\n\" \r\n headers = { 'Content-Type': 'application/json' } \r\n response = requests.request(\"GET\", url, headers=headers, params=querystring)\r\n  print(response.text)"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/forecast_weather?City=Sarajevo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"forecast_weather"
+					],
+					"query": [
+						{
+							"key": "City",
+							"value": "Sarajevo"
+						}
+					]
+				},
+				"description": "Name: Forecast Weather  \nHTTP Method: GET  \n[http://127.0.0.1:8000/forecast_weather](http://127.0.0.1:8000/forecast_weather?City=Sarajevo)"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/current_weather?City=Sarajevo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiKey = \"f3ed51b69a289e802be8af96e841cb18\";\r",
+							"pm.globals.set(\"apiKey\", apiKey);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has expected keys\", function () {\r",
+							"    pm.expect(pm.response.json().hasOwnProperty(\"weather\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"description\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"temperature\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"humidity\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"wind_speed\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"city\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"country\")).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "import requests\r\n import json api_key = f3ed51b69a289e802be8af96e841cb18 \r\n url = \"http://127.0.0.1:8000/\" \r\n querystring = {\"City\": \"Sarajevo\", \"api_key\": api_key}\r\n payload = \"\\r\\n\" \r\n headers = { 'Content-Type': 'application/json' } \r\n response = requests.request(\"GET\", url, headers=headers, params=querystring)\r\n  print(response.text)",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/current_weather?City=Sarajevo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"current_weather"
+					],
+					"query": [
+						{
+							"key": "City",
+							"value": "Sarajevo"
+						}
+					]
+				},
+				"description": "Name: Current Weather\r\nHTTP Method: GET\r\nURL:http://127.0.0.1:8000/current_weather"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/past_weather?City=Sarajevo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const apiKey = \"f3ed51b69a289e802be8af96e841cb18\";\r",
+							"pm.globals.set(\"apiKey\", apiKey);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has expected keys\", function () {\r",
+							"    pm.expect(pm.response.json().hasOwnProperty(\"weather\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"description\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"temperature\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"humidity\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"wind_speed\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"city\")).to.be.true;\r",
+							"    pm.expect(pm.response.json().weather.hasOwnProperty(\"country\")).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "import requests\r\n import json api_key = f3ed51b69a289e802be8af96e841cb18 \r\n url = \"http://127.0.0.1:8000/\" \r\n querystring = {\"City\": \"Sarajevo\", \"api_key\": api_key}\r\n payload = \"\\r\\n\" \r\n headers = { 'Content-Type': 'application/json' } \r\n response = requests.request(\"GET\", url, headers=headers, params=querystring)\r\n  print(response.text)"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/past_weather?City=Sarajevo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"past_weather"
+					],
+					"query": [
+						{
+							"key": "City",
+							"value": "Sarajevo"
+						}
+					]
+				},
+				"description": "Name: Past Weather\r\nHTTP Method: GET\r\nURL: http://localhost:8000/weather/past_weather"
+			},
+			"response": []
+		}
+	]
+}
